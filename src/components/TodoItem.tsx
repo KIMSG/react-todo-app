@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import type { ChangeEvent } from "react";
 import type { Todo } from "../App";
 
+// TodoItem 컴포넌트는 개별 할 일 항목을 표시하고, 수정, 삭제 기능을 제공합니다.
+// 이 컴포넌트는 TodoList 컴포넌트에서 사용됩니다.
+// TodoItem 컴포넌트는 todo, toggleTodo, removeTodo, editTodo props를 받습니다.
+
+
 interface Props {
   todo: Todo;
   toggleTodo: (id: number) => void;

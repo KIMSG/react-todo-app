@@ -18,10 +18,13 @@ function App() {
 
 
   const addTodo = (text: string) => {
+    // 새로운 일감을 추가합니다.
+
     setTodos([...todos, { id: Date.now(), text, done: false }]);
   };
 
   const toggleTodo = (id: number) => {
+    // 일감의 완료 상태를 토글합니다. 구현 아직 안됨
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, done: !todo.done } : todo
@@ -30,10 +33,15 @@ function App() {
   };
 
   const removeTodo = (id: number) => {
+    // 일감을 삭제 합니다. 
+
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   const editTodo = (id: number, text: string) => {
+    // 일감의 내용을 수정합니다.
+    // 여기서 id와 text를 사용하여 해당 todo를 수정합니다.
+
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, text } : todo
