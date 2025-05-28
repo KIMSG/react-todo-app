@@ -15,15 +15,22 @@ interface Props {
 }
 
 function TodoItem({ todo, toggleTodo, removeTodo, editTodo }: Props) {
+  // isEditing 상태는 현재 할 일이 수정 모드인지 여부를 나타냅니다.
+  // editText 상태는 수정 중인 할 일의 텍스트를 저장합니다.
+
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(todo.text);
 
   const handleEditClick = (id: number) => {
+    // 수정 버튼을 클릭하면 isEditing 상태를 true로 설정하고, editText를 현재 todo의 텍스트로 초기화합니다.
     setIsEditing(true);
     console.log("수정 버튼 클릭", id);
   };  
 
   const handleSaveClick = (id: number) => {
+    // 저장 버튼을 클릭하면 isEditing 상태를 false로 설정하고, editText를 업데이트합니다.
+    // editTodo 함수를 호출하여 todo를 수정합니다.
+    
     setIsEditing(false);
     setEditText(editText);
     editTodo(id, editText);
