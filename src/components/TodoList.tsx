@@ -10,6 +10,8 @@ interface Props {
 }
 
 function TodoList({ todos, toggleTodo, removeTodo, editTodo }: Props) {
+  // TodoList 컴포넌트는 할 일 목록을 렌더링하고, 각 할 일 항목에 대한 TodoItem 컴포넌트를 사용합니다.
+  // 이 컴포넌트는 todos, toggleTodo, removeTodo, editTodo props를 받습니다. 
 
   return (
     <ul>
