@@ -25,7 +25,10 @@ interface RandomProps {
 }
 
 const RandomAddButton = ({ onAdd }: RandomProps) => {
-
+    // RandomAddButton 컴포넌트는 랜덤한 할 일을 생성하는 버튼을 렌더링합니다.
+    // 이 컴포넌트는 onAdd prop을 받아 랜덤한 할 일을 추가하는 기능을 제공합니다.
+    // 랜덤한 할 일 목록에서 하나를 선택하여 onAdd 함수를 호출합니다.
+    
     const handleClick = () => {
         const randomIndex = Math.floor(Math.random() * randomTodos.length);
         const randomTodo = randomTodos[randomIndex];
