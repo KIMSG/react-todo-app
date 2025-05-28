@@ -11,6 +11,10 @@ interface RemoveTodoSectionProps {
 
 
 const RemoveTodoSection = ({todos , setTodos, setRemoveCount}:RemoveTodoSectionProps) => {
+    // RemoveTodoSection 컴포넌트는 사용자가 입력한 텍스트에 해당하는 할 일을 삭제하는 기능을 제공합니다.
+    // 이 컴포넌트는 todos, setTodos, setRemoveCount props를 받아 삭제 기능을 구현합니다.
+    // removeText 상태는 사용자가 삭제할 할 일의 텍스트를 입력하는 데 사용됩니다.
+    
     const [removeText, setRemoveText] = useState<string>('');
 
     const handleClick = () => {
