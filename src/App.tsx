@@ -31,6 +31,16 @@ function App() {
   useEffect(() => {
     localStorage.setItem("my-todos", JSON.stringify(todos));
   }, [todos]);
+    
+  const prevTodosLengthRef = useRef<number>(todos.length);
+
+  useEffect(() => {
+    console.log("🧾 이전 할 일 개수:", prevTodosLengthRef.current);
+    console.log("📌 현재 할 일 개수:", todos.length);
+
+    prevTodosLengthRef.current = todos.length; // 항상 최신값으로 업데이트
+  }, [todos]);
+
 
   const [shouldShake, setShouldShake] = useState(false);
 
