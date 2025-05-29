@@ -97,3 +97,11 @@ src/
 목표: useState, useEffect, props, 컴포넌트 분리
 
 조건부 렌더링, 이벤트 처리, 간단한 폼
+
+🚀 다음 학습 추천
+개념 추천 이유
+useRef input에 포커스 주기, DOM 직접 참조
+context API props 깊게 넘기지 않고 전역 상태 관리 연습
+커스텀 훅 useTodos()처럼 공통 로직을 추출하는 연습
+조건부 렌더링 "완료된 할 일만 보기", "할 일 없을 때 안내문" 등
+React Router 페이지 나누기 (/about, /todo, /stats 등)
