@@ -20,6 +20,7 @@ function App() {
 
   const [draftInput, setDraftInput] = useState(""); // 입력값 상태 추가
   const inputTimerRef = useRef<NodeJS.Timeout | null>(null); // 타이머 ID 저장용
+  const lastSavedValueRef = useRef<string | null>(null); // ✅ 마지막으로 저장된 값
 
 
     // 🚀 localStorage에서 불러오기
@@ -99,7 +100,13 @@ function App() {
     }
 
     inputTimerRef.current = setTimeout(() => {
+      // ✅ 동일한 값이면 저장하지 않음
+      if (value === lastSavedValueRef.current) {
+        console.log("⚠️ 이전과 같은 값 → 저장 생략");
+        return;
+      }
       localStorage.setItem("todo-draft", value);
+      lastSavedValueRef.current = value; // 최신 값 갱신
       console.log("💾 자동 저장됨:", value);
     }, 2000);
   };
