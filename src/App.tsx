@@ -15,7 +15,8 @@ function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
   // 삭제된 할 일의 개수를 계산합니다.
   const [removeCount, setRemoveCount] = useState(0); // 필요에 따라 실제 삭제 개수 로직으로 변경하세요.
-
+  
+  const inputFocusRef = useRef<HTMLInputElement>(null);
     // 🚀 localStorage에서 불러오기
   useEffect(() => {
     const stored = localStorage.getItem("my-todos");
@@ -23,18 +24,24 @@ function App() {
       setTodos(JSON.parse(stored));
       console.log("🧾 저장된 할 일 목록:", JSON.parse(stored));
     }
+    
   }, []);
 
-  
   // 💾 todos가 바뀔 때 localStorage에 저장
   useEffect(() => {
     localStorage.setItem("my-todos", JSON.stringify(todos));
   }, [todos]);
 
-  const addTodo = (text: string) => {
-    // 새로운 일감을 추가합니다.
+  const [shouldShake, setShouldShake] = useState(false);
 
+
+
+  const addTodo = (text: string) => {
+    
+    // 새로운 일감을 추가합니다.
     setTodos([...todos, { id: Date.now(), text, done: false }]);
+    setShouldShake(true);
+    setTimeout(() => setShouldShake(false), 500);
   };
 
   const toggleTodo = (id: number) => {
@@ -63,17 +70,16 @@ function App() {
     );
   }; 
 
-  const inputFocusRef = useRef<HTMLInputElement>(null);
 
   return (
     <div className="p-4 max-w-xl mx-auto">
       <h1 className="text-2xl font-bold mb-4">📝 나의 할 일 목록</h1>
       <h4>삭제 개수 {removeCount}</h4>
       <input
-        ref={inputFocusRef}
+        // ref={inputFocusRef}
         type="text"
         placeholder="할 일이 랜덤하게 생깁니다."
-        className="border p-2 w-full mb-4"
+        className={`border p-2 w-full mb-4 ${shouldShake ? "animate-shake" : ""}`}
         />
         
       <RandomAddButton onAdd={addTodo} />
